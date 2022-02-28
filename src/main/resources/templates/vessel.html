@@ -11,11 +11,17 @@
 <body>
     <h2>모선으로 선사조회</h2>
     <br/>
+
+    <input type="text" id="searchInput">
+    <button id="searchButton">검색</button>
     <br/>
+    <br/>
+
     <table class="lookupTable" id="vesselTable">
         <thead>
             <tr>
-                <th class="company_name">선사이름</th>
+                <th class="name">선사이름</th>
+                <th class="vessel">모선</th>
                 <th class="route">서비스 구간</th>
             </tr>
         </thead>
@@ -28,6 +34,7 @@
     <script id="_dumyTemplate" type="text/x-handlebars-template">
         <tr>
             <td class="name">{{name}}</td>
+            <td class="vessel">{{vessel}}</td>
             <td class="route">{{route}}</td>
         </tr>
     </script>

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -23,18 +24,29 @@ public class VesselController {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("vessel");
 
+//        try {
+//            crawlService.test2();
+//        }catch (IOException e){
+//            e.printStackTrace();
+//        }
+
         return mv;
     }
 
     @ResponseBody
     @PostMapping("/selectByVessel")
     public String selectByVessel(){
+        String result = "";
 
-        List<VesselCompanyDto> companyList = crawlService.test1();
-        Gson gson = new Gson();
-        String jsonVessel = gson.toJson(companyList);
+        try {
+            List<VesselCompanyDto> companyList = crawlService.test2();
+            Gson gson = new Gson();
+            result = gson.toJson(companyList);
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
 
-        return jsonVessel;
+        return result;
 
     }
 
