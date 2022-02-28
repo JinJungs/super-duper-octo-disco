@@ -44,9 +44,9 @@ dependencies {
 
     // https://mvnrepository.com/artifact/org.jsoup/jsoup
     implementation group: 'org.jsoup', name: 'jsoup', version: '1.13.1'
-    // https://mvnrepository.com/artifact/com.github.jknack/handlebars
-//    compile 'pl.allegro.tech.boot:handlebars-spring-boot-starter:0.3.4'
-//    implementation group: 'com.github.jknack', name: 'handlebars', version: '4.0.6'
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.0.1'
+
 
 
 }
