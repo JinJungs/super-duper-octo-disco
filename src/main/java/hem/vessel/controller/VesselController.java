@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -24,22 +25,16 @@ public class VesselController {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("vessel");
 
-//        try {
-//            crawlService.test2();
-//        }catch (IOException e){
-//            e.printStackTrace();
-//        }
-
         return mv;
     }
 
     @ResponseBody
     @PostMapping("/selectByVessel")
-    public String selectByVessel(){
+    public String selectByVessel(@RequestBody VesselCompanyDto reqDto){
         String result = "";
 
         try {
-            List<VesselCompanyDto> companyList = crawlService.test2();
+            List<VesselCompanyDto> companyList = crawlService.test2(reqDto.getVessel());
             Gson gson = new Gson();
             result = gson.toJson(companyList);
         }catch (IOException e) {

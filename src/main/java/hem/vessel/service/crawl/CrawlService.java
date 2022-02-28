@@ -27,20 +27,19 @@ public class CrawlService {
         return vesselCompanyDtoList;
     }
 
-    public List<VesselCompanyDto> test2() throws IOException {
-        String VESSEL_NAME = "POS";
-        String COMPANY_NAME = "PanOcean";
+    public List<VesselCompanyDto> test2(String keyword) throws IOException {
+        final String COMPANY_NAME = "PanOcean";
         List<VesselCompanyDto> vesselCompanyDtoList = new ArrayList<>();
         String URL = "https://container.panocean.com/HP3102/hp3102.stx?vessel_name=";
 
-        if(VESSEL_NAME == null) {
-            return vesselCompanyDtoList;
+        if(keyword == null) {
+            keyword = "POS TOKYO";
         }
 
         // 크롤링 구현
         // 선박이름을 해당 사이트에서 조회한 결과를 가져옴 (like 로 조회)
         // TODO 정확하게 해당 선박 이름이 필요하다면 로직을 수정할 필요가 있음
-        Document doc = Jsoup.connect(URL+VESSEL_NAME).get();
+        Document doc = Jsoup.connect(URL+keyword).get();
         Elements elem = doc.select("table[id='jqTblShipList']>tbody>tr");
 
         for(Element e: elem) {
