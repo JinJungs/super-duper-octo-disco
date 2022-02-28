@@ -1,0 +1,26 @@
+server:
+  port: 80
+
+spring:
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
+  thymeleaf:
+    prefix: classpath:templates/
+    suffix: .html
+    cache: false
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: urlname
+    username: username
+    password: password
+    hikari:
+      maximum-pool-size: 10
+
+mybatis:
+  type-aliases-package: hem.vessel.dto
+  mapper-locations: classpath:mapper/*.xml
+
+

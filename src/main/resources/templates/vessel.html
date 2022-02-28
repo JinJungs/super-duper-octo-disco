@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>모선으로 선사조회</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="node_modules/handlebars/dist/handlebars.js"></script>
+    <script type="text/javascript" src="node_modules/bootstrap/dist/js/bootstrap.js"></script>
+</head>
+
+<body>
+    <h2>모선으로 선사조회</h2>
+    <br/>
+    <br/>
+    <table class="lookupTable" id="vesselTable">
+        <thead>
+            <tr>
+                <th class="company_name">선사이름</th>
+                <th class="route">서비스 구간</th>
+            </tr>
+        </thead>
+        <tbody id="tableContent">
+            <!--여기에 조회한 데이터 출력-->
+        </tbody>
+    </table>
+
+    <!--dumyTemplate-->
+    <script id="_dumyTemplate" type="text/x-handlebars-template">
+        <tr>
+            <td class="name">{{name}}</td>
+            <td class="route">{{route}}</td>
+        </tr>
+    </script>
+
+
+</body>
+</html>
+
+<script type="text/javascript" src="javascript/vessel.js"></script>
