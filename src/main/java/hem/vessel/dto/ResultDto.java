@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
-public class ShippingCompanyDto {
+public class ResultDto {
 
     public String name;
     public String vessel;

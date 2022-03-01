@@ -1,6 +1,6 @@
 package hem.vessel.service.crawl;
 
-import hem.vessel.dto.ShippingCompanyDto;
+import hem.vessel.dto.ResultDto;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -14,11 +14,11 @@ import java.util.List;
 @Service
 public class CrawlService {
 
-    public List<ShippingCompanyDto> test1(){
-        List<ShippingCompanyDto> shippingCompanyDtoList = new ArrayList<>();
+    public List<ResultDto> test1(){
+        List<ResultDto> shippingCompanyDtoList = new ArrayList<>();
 
         for(int i=0; i<10; i++){
-            ShippingCompanyDto shippingCompanyDto = new ShippingCompanyDto();
+            ResultDto shippingCompanyDto = new ResultDto();
             shippingCompanyDto.setName("선사 " + i);
             shippingCompanyDto.setRoute("경로 "+ i);
             shippingCompanyDtoList.add(shippingCompanyDto);
@@ -27,9 +27,9 @@ public class CrawlService {
         return shippingCompanyDtoList;
     }
 
-    public List<ShippingCompanyDto> test2(String keyword) throws IOException {
+    public List<ResultDto> test2(String keyword) throws IOException {
         final String COMPANY_NAME = "PanOcean";
-        List<ShippingCompanyDto> shippingCompanyDtoList = new ArrayList<>();
+        List<ResultDto> shippingCompanyDtoList = new ArrayList<>();
         String URL = "https://container.panocean.com/HP3102/hp3102.stx?vessel_name=";
 
         if(keyword == null) {
@@ -45,7 +45,7 @@ public class CrawlService {
         for(Element e: elem) {
             String vesselName = e.select("td").get(1).text();
 
-            ShippingCompanyDto shippingCompanyDto = new ShippingCompanyDto();
+            ResultDto shippingCompanyDto = new ResultDto();
             shippingCompanyDto.setName(COMPANY_NAME);
             shippingCompanyDto.setVessel(vesselName);
             shippingCompanyDtoList.add(shippingCompanyDto);
