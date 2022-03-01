@@ -1,7 +1,7 @@
 package hem.vessel.controller;
 
 import com.google.gson.Gson;
-import hem.vessel.dto.VesselCompanyDto;
+import hem.vessel.dto.ShippingCompanyDto;
 import hem.vessel.service.crawl.CrawlService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,11 +30,11 @@ public class VesselController {
 
     @ResponseBody
     @PostMapping("/selectByVessel")
-    public String selectByVessel(@RequestBody VesselCompanyDto reqDto){
+    public String selectByVessel(@RequestBody ShippingCompanyDto reqDto){
         String result = "";
 
         try {
-            List<VesselCompanyDto> companyList = crawlService.test2(reqDto.getVessel());
+            List<ShippingCompanyDto> companyList = crawlService.test2(reqDto.getVessel());
             Gson gson = new Gson();
             result = gson.toJson(companyList);
         }catch (IOException e) {

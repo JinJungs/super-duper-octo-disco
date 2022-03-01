@@ -1,6 +1,6 @@
 package hem.vessel.service.crawl;
 
-import hem.vessel.dto.VesselCompanyDto;
+import hem.vessel.dto.ShippingCompanyDto;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -14,22 +14,22 @@ import java.util.List;
 @Service
 public class CrawlService {
 
-    public List<VesselCompanyDto> test1(){
-        List<VesselCompanyDto> vesselCompanyDtoList = new ArrayList<>();
+    public List<ShippingCompanyDto> test1(){
+        List<ShippingCompanyDto> shippingCompanyDtoList = new ArrayList<>();
 
         for(int i=0; i<10; i++){
-            VesselCompanyDto vesselCompanyDto = new VesselCompanyDto();
-            vesselCompanyDto.setName("선사 " + i);
-            vesselCompanyDto.setRoute("경로 "+ i);
-            vesselCompanyDtoList.add(vesselCompanyDto);
+            ShippingCompanyDto shippingCompanyDto = new ShippingCompanyDto();
+            shippingCompanyDto.setName("선사 " + i);
+            shippingCompanyDto.setRoute("경로 "+ i);
+            shippingCompanyDtoList.add(shippingCompanyDto);
         }
 
-        return vesselCompanyDtoList;
+        return shippingCompanyDtoList;
     }
 
-    public List<VesselCompanyDto> test2(String keyword) throws IOException {
+    public List<ShippingCompanyDto> test2(String keyword) throws IOException {
         final String COMPANY_NAME = "PanOcean";
-        List<VesselCompanyDto> vesselCompanyDtoList = new ArrayList<>();
+        List<ShippingCompanyDto> shippingCompanyDtoList = new ArrayList<>();
         String URL = "https://container.panocean.com/HP3102/hp3102.stx?vessel_name=";
 
         if(keyword == null) {
@@ -45,13 +45,13 @@ public class CrawlService {
         for(Element e: elem) {
             String vesselName = e.select("td").get(1).text();
 
-            VesselCompanyDto vesselCompanyDto = new VesselCompanyDto();
-            vesselCompanyDto.setName(COMPANY_NAME);
-            vesselCompanyDto.setVessel(vesselName);
-            vesselCompanyDtoList.add(vesselCompanyDto);
+            ShippingCompanyDto shippingCompanyDto = new ShippingCompanyDto();
+            shippingCompanyDto.setName(COMPANY_NAME);
+            shippingCompanyDto.setVessel(vesselName);
+            shippingCompanyDtoList.add(shippingCompanyDto);
 
         }
 
-        return vesselCompanyDtoList;
+        return shippingCompanyDtoList;
     }
 }
